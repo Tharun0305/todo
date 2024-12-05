@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="frm">
+      <input type="text" id="ip" placeholder="add a todo" />
+      <input type="submit" id="add" value="submit" />
+    </form>
+    <ul id="list"></ul>
+
+    <script>
+      let form = document.getElementById("frm");
+      let ip = document.getElementById("ip");
+      let list = document.getElementById("list");
+      let add = document.getElementById("add");
+
+      form.addEventListener("submit", (e) => {
+         e.preventDefault();
+        let listItem = document.createElement("li");
+        listItem.innerText = ip.value + " ";
+        let btn = document.createElement("button");
+        btn.addEventListener("click", () => {
+          list.removeChild(listItem);
+        });
+        btn.innerHTML = "DELETE";
+        listItem.appendChild(btn);
+        list.appendChild(listItem);
+        ip.value = "";
+      });
+    </script>
+  </body>
+</html>
